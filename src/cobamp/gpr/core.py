@@ -28,22 +28,18 @@ def aux_apply(fx, it):
 
 def normalize_boolean_expression(rule, simplify=False):
 	BOOLEAN_ALGEBRA = BooleanAlgebra()
-	###try:
-	print("+++++++++++++ rule ++++++++++++++++")
-	print(rule)
-	expr = BOOLEAN_ALGEBRA.parse(rule).literalize().simplify()
-	print("Expr: ", expr)
-	# Simplify first otherwise _rdistributive() may take forever.
-	operation_example = BOOLEAN_ALGEBRA.OR(BOOLEAN_ALGEBRA.TRUE, BOOLEAN_ALGEBRA.FALSE)
-
-	expr = BOOLEAN_ALGEBRA._rdistributive(expr, operation_example)
-	if simplify:
-		expr = expr.simplify()
-	#bool_expression = BOOLEAN_ALGEBRA.normalize(expression, BOOLEAN_ALGEBRA.OR)
-	return str(expr).replace('&', ' and ').replace('|', ' or ')
-	###except Exception as e:
-	###	warnings.warn('Could not normalize this rule: ' + rule)
-	###	return rule
+	try:
+		expr = BOOLEAN_ALGEBRA.parse(rule).literalize().simplify()
+		# Simplify first otherwise _rdistributive() may take forever.
+		operation_example = BOOLEAN_ALGEBRA.OR(BOOLEAN_ALGEBRA.TRUE, BOOLEAN_ALGEBRA.FALSE)
+		expr = BOOLEAN_ALGEBRA._recurse_distributive(expr, operation_example)
+		if simplify:
+			expr = expr.simplify()
+		#bool_expression = BOOLEAN_ALGEBRA.normalize(expression, BOOLEAN_ALGEBRA.OR)
+		return str(expr).replace('&', ' and ').replace('|', ' or ')
+	except Exception as e:
+		warnings.warn('Could not normalize this rule: ' + rule)
+		return rule
 
 def convert_gpr_to_list(gpr, apply_fx=str, or_char='or', and_char='and'):
 	proteins = list(
