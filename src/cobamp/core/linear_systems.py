@@ -245,6 +245,7 @@ class LinearSystem():
 			self.model.problem.Params.Threads = actual_threads
             self.model.problem.Params.Seed = 12345
             self.model.problem.Params.TimeLimit = gurobipy.GRB.INFINITY
+            print("RANDOM SEEEEEEEEEEEEEEEEEEEEEEEEEEEEEED")
 		else:
 			warnings.warn('Could not set threads for ' + str(self.solver) + ' instance. Not yet implemented!')
 
