@@ -243,6 +243,8 @@ class LinearSystem():
 			self.model.problem.parameters.threads.set(actual_threads)
 		elif self.solver == 'GUROBI':
 			self.model.problem.Params.Threads = actual_threads
+            self.model.problem.Params.Seed = 12345
+            self.model.problem.Params.TimeLimit = gurobipy.GRB.INFINITY
 		else:
 			warnings.warn('Could not set threads for ' + str(self.solver) + ' instance. Not yet implemented!')
 
@@ -595,7 +597,6 @@ class GenericLinearSystem(LinearSystem):
 		"""
 		self.select_solver(solver)
 		self.model = self.interface.Model()
-        self.model.problem.setParam(GRB.Param.seed, 12345)
 		self.set_default_configuration()
 		self.S, self.lb, self.ub, self.b_lb, self.b_ub, self.var_types = S, lb, ub, b_lb, b_ub, var_types
 
