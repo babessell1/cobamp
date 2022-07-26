@@ -595,7 +595,7 @@ class GenericLinearSystem(LinearSystem):
 		"""
 		self.select_solver(solver)
 		self.model = self.interface.Model()
-        self.model.problem.setParam(GRB.Param.seed, 12345)
+        #self.model.problem.setParam(GRB.Param.seed, 12345)
 		self.set_default_configuration()
 		self.S, self.lb, self.ub, self.b_lb, self.b_ub, self.var_types = S, lb, ub, b_lb, b_ub, var_types
 
