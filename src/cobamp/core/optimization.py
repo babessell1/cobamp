@@ -480,7 +480,9 @@ class GIMMESolution(Solution):
 		activity[ones] = 1
 		activity[twos & ~ones] = 2
 
-		return activity
+		#return activity
+        #return flux instead of binarized activitiy
+        return gimme_fluxes
 
 
 class KShortestSolution(Solution):
