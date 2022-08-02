@@ -480,7 +480,7 @@ class GIMMESolution(Solution):
 		activity[ones] = 1
 		activity[twos & ~ones] = 2
 
-		return gimme_fluxes
+		return activity
 
 
 class KShortestSolution(Solution):
