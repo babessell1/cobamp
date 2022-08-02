@@ -479,8 +479,10 @@ class GIMMESolution(Solution):
 		twos = gimme_fluxes > 0
 		activity[ones] = 1
 		activity[twos & ~ones] = 2
-        return gimme_fluxes
-        
+
+		return gimme_fluxes
+
+
 class KShortestSolution(Solution):
 	"""
 	A Solution subclass that also contains attributes suitable for elementary flux modes such as non-cancellation sums
