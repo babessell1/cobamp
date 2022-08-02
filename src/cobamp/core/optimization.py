@@ -479,9 +479,6 @@ class GIMMESolution(Solution):
 		twos = gimme_fluxes > 0
 		activity[ones] = 1
 		activity[twos & ~ones] = 2
-
-		#return activity
-        #return flux instead of binarized activitiy
         return gimme_fluxes
 
 
