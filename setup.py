@@ -1,3 +1,4 @@
+import os
 from setuptools import setup, find_packages
 
 # Get the directory where setup.py is located
