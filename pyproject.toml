@@ -1,6 +1,6 @@
 [project]
 name = "cobamp"
-version = "0.1.0"
+version = "0.2.2"
 description = "Constraint-based modeling framework for the enumeration of pathway analysis concepts"
 authors = [
     {name = "Jorge Ferreira", email = "jorge.ferreira@ceb.uminho.pt"},
