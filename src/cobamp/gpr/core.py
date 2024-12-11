@@ -32,7 +32,7 @@ def normalize_boolean_expression(rule, simplify=False):
 		expr = BOOLEAN_ALGEBRA.parse(rule).literalize().simplify()
 		# Simplify first otherwise _rdistributive() may take forever.
 		operation_example = BOOLEAN_ALGEBRA.OR(BOOLEAN_ALGEBRA.TRUE, BOOLEAN_ALGEBRA.FALSE)
-		expr = BOOLEAN_ALGEBRA._rdistributive(expr, operation_example)
+		expr = BOOLEAN_ALGEBRA._recurse_distributive(expr, operation_example)
 		if simplify:
 			expr = expr.simplify()
 		#bool_expression = BOOLEAN_ALGEBRA.normalize(expression, BOOLEAN_ALGEBRA.OR)
